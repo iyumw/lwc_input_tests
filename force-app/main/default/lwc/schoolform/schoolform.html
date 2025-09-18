@@ -1,0 +1,64 @@
+<template>
+    <div class="slds-card slds-p-around_small" style="background-color: #f3f5f7;">
+        <div style="display: flex; justify-content: center; align-items: center; height: 60px;"> <lightning-icon icon-name="standard:education" size="large" style="--slds-c-icon-color-foreground-default: #0070d2;"></lightning-icon>
+        </div>
+        <h2 class="form-header">School Information Form</h2>
+        
+        <div class="form-container">
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:identity" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input name="schoolName" label="School Name" variant="label-hidden" placeholder="School Name" value={schoolName} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:location" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input name="schoolAddress" label="School Address" variant="label-hidden" placeholder="School Address" value={schoolAddress} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:people" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input type="number" name="numberOfStudents" label="Number of Students" variant="label-hidden" placeholder="Number of Students" value={numberOfStudents} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:picklist_type" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-combobox name="schoolType" label="School Type" variant="label-hidden" value={schoolType} placeholder="Select School Type" options={schoolTypeOptions} onchange={handleInputChange}></lightning-combobox>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:email" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input type="email" label="Contact Email" name="contactEmail" variant="label-hidden" placeholder="Contact Email" value={contactEmail} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:event" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input type="date" label="Established Date" name="establishedDate" variant="label-hidden" placeholder="Established Date" value={establishedDate} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon-top">
+                <lightning-icon icon-name="utility:multi_select_checkbox" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-checkbox-group name="educationLevels" label="Education Levels" options={educationLevelsOptions} value={educationLevels} onchange={handleInputChange}></lightning-checkbox-group>
+            </div>
+
+            <div class="input-with-icon-top slider-container">
+                <lightning-icon icon-name="utility:sentiment_neutral" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-slider name="satisfactionSlider" label="Parent Satisfaction Rate" value={val} onchange={handleInputChange} size="small" step="10"></lightning-slider>
+            </div>
+
+            <div class="input-with-icon-top">
+                <lightning-icon icon-name="utility:radio_button" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-radio-group name="boardingType" label="Boarding Type" options={boardingOptions} value={boardingType} onchange={handleInputChange}></lightning-radio-group>
+            </div>
+
+            <div class="input-with-icon">
+                <lightning-icon icon-name="utility:help_center" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-input type="checkbox" label="Requires Special Assistance" name="requiresSpecialAssistance" checked={requiresSpecialAssistance} onchange={handleInputChange}></lightning-input>
+            </div>
+
+            <div class="input-with-icon-top">
+                <lightning-icon icon-name="utility:apps" size="x-small" class="input-icon"></lightning-icon>
+                <lightning-dual-listbox name="extracurricularActivities" label="Extracurricular Activities" source-label="Available" selected-label="Selected" options={activityOptions} value={extracurricularActivities} onchange={handleInputChange}></lightning-dual-listbox>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,72 @@
+/* Estilo do cabeçalho do formulário */
+.form-header {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #0070d2;
+    letter-spacing: 1px;
+    margin-bottom: 1rem; /* Espaçamento reduzido */
+    font-size: 1.1rem;   /* Tamanho da fonte ligeiramente menor */
+}
+
+/* Contêiner principal do formulário */
+.form-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 1rem; /* Preenchimento interno reduzido */
+    max-width: 360px; /* LARGURA MÁXIMA REDUZIDA SIGNIFICATIVAMENTE */
+    margin: 0 auto;
+}
+
+/* Container para alinhar ícone e inputs simples (texto, data, email) */
+.input-with-icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem; /* Espaçamento entre campos reduzido */
+}
+
+/* Container para alinhar ícone e inputs complexos (checkbox-group, slider) */
+.input-with-icon-top {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.75rem; /* Espaçamento entre campos reduzido */
+    padding-top: 1.25rem;
+    position: relative;
+}
+
+/* Estilo para os ícones */
+.input-icon {
+    --slds-c-icon-color-foreground-default: #0070d2;
+    margin-right: 0.5rem; /* Espaçamento do ícone reduzido */
+    flex-shrink: 0;
+}
+
+/* Garante que os componentes preencham o espaço disponível */
+.input-with-icon lightning-input,
+.input-with-icon lightning-combobox,
+.input-with-icon-top lightning-checkbox-group,
+.input-with-icon-top lightning-slider,
+.input-with-icon-top lightning-radio-group,
+.input-with-icon-top lightning-dual-listbox {
+    width: 100%;
+    margin-bottom: 0; 
+}
+
+/* Ajusta a posição do rótulo nos componentes complexos */
+.input-with-icon-top .slds-form-element__label {
+    position: absolute;
+    top: 0;
+    left: 24px; /* Posição ajustada para o novo espaçamento do ícone */
+}
+
+/* Customização global para todos os rótulos de formulário */
+:host {
+    --slds-c-label-font-size: 0.875rem;
+    --slds-c-label-font-weight: 600;
+    --slds-c-label-color: #00529F;
+}
+
+.slider-container .slds-form-element__control {
+    padding: 0 1rem; /* Adiciona espaço interno horizontalmente */
+}
