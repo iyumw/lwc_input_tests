@@ -1,10 +1,17 @@
 import { LightningElement, api } from 'lwc';
 
+/**
+ * @description Componente de formulário para coletar informações sobre uma escola.
+ * Dispara um evento 'valuechange' sempre que um campo do formulário é alterado.
+ */
+
 export default class Schoolform extends LightningElement {
-    @api value;
+
+    @api value; //Objeto para preencher os valores iniciais do formulário.
     @api readOnly;
 
-    // Propriedades do formulário
+    // --- PROPRIEDADES DO COMPONENTE ---
+    // Armazenam o estado de cada campo do formulário.
     schoolName;
     schoolAddress;
     numberOfStudents;
@@ -17,13 +24,15 @@ export default class Schoolform extends LightningElement {
     requiresSpecialAssistance = false;
     extracurricularActivities = [];
 
-    // Getters para as opções (sem alterações)
+    // --- GETTERS PARA OPÇÕES DE PICKLISTS ---
+    // Estes getters fornecem as opções para os componentes de seleção.
     get schoolTypeOptions() { return [ { label: 'Public', value: 'Public' }, { label: 'Private', value: 'Private' } ]; }
     get educationLevelsOptions() { return [ { label: 'Elementary', value: 'Elementary' }, { label: 'Middle School', value: 'Middle School' }, { label: 'High School', value: 'High School' }, { label: 'College', value: 'College' } ]; }
     get boardingOptions() { return [ { label: 'Day School', value: 'Day School' }, { label: 'Boarding School', value: 'Boarding School' }]; }
     get activityOptions() { return [ { label: 'Sports', value: 'Sports' }, { label: 'Music', value: 'Music' }, { label: 'Arts', value: 'Arts' }, { label: 'Robotics', value: 'Robotics' }, { label: 'Debate Club', value: 'Debate Club' } ]; }
 
-    
+    // --- MÉTODOS DO CICLO DE VIDA ---
+    // Popula os campos do formulário com os valores iniciais fornecidos via propriedade 'value'.
     connectedCallback() {
         if (this.value) {
             const data = this.value;
@@ -41,14 +50,15 @@ export default class Schoolform extends LightningElement {
         }
     }
 
-    // --- VERSÃO FINAL E CORRIGIDA DO HANDLEINPUTCHANGE ---
+    // --- MANIPULADORES DE EVENTOS ---
+    // Manipula mudanças em qualquer campo do formulário.
     handleInputChange(event) {
         event.stopPropagation();
         
         const fieldName = event.target.name;
         let fieldValue;
 
-        // Determina de onde obter o valor com base no tipo de input
+        // O valor pode vir de 'checked', 'value' ou 'detail.value' dependendo do componente.
         switch(event.target.type) {
             case 'checkbox':
                 // Para lightning-input com type="checkbox"
@@ -62,7 +72,7 @@ export default class Schoolform extends LightningElement {
 
         this[fieldName] = fieldValue;
 
-        // Agora, o dispatchEvent é reativado e construído de forma segura
+        // Dispara o evento 'valuechange' com o estado atualizado do formulário.
         this.dispatchEvent(
             new CustomEvent("valuechange", {
                 bubbles: true,
@@ -87,6 +97,8 @@ export default class Schoolform extends LightningElement {
         );
     }
 
+    // --- MÉTODOS AUXILIARES ---
+    // Converte uma string delimitada por ponto e vírgula em um array.
     stringToArray(value) {
         if (value && typeof value === 'string') {
             return value.split(';');
